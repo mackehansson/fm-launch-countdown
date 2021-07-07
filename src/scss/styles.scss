@@ -69,20 +69,33 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 60px;
+    text-align: center;
+
+    @media (min-width: 1440px) {
+        margin-top: 100px;
+    }
 }
 
 .counter {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 60px;
+
+    @media (min-width: 1440px) {
+        margin-top: 100px;
+    }
 }
 
 .socials {
     margin-top: auto;
     text-align: center;
-    padding-bottom: 64px;
+    padding-bottom: 32px;
+
+    @media (min-width: 1440px) {
+        padding-bottom: 64px;
+    }
 
     a {
         color: var(--color-grayish-blue);
@@ -97,14 +110,22 @@ h1 {
 }
 
 .number-cards {
+    --gapSize: 16px;
+
     display: flex;
-    gap: 24px;
+    gap: var(--gapSize);
+
+    @media (min-width: 1440px) {
+        --gapSize: 24px;
+    }
 }
 
 .number-card {
-    --card-size: 132px;
+    --card-size-width: 70px;
+    --card-size-height: 65px;
     --borderRadius: 8px;
     --bulletSize: 10px;
+    --numberSize: 32px;
 
     &__number-wrapper {
         position: relative;
@@ -121,8 +142,8 @@ h1 {
             content: "";
             position: absolute;
             top: 0;
-            right: 2px;
-            left: 2px;
+            left: 0;
+            width: var(--card-size-width);
             bottom: -8px;
             border-bottom-left-radius: var(--borderRadius);
             border-bottom-right-radius: var(--borderRadius);
@@ -134,14 +155,19 @@ h1 {
     &__number-content {
         position: relative;
         z-index: 1;
-        width: var(--card-size);
-        height: var(--card-size);
+        width: var(--card-size-width);
+        height: var(--card-size-height);
         background: var(--color-dark-desaturated-blue);
         border-radius: var(--borderRadius);
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media (min-width: 1440px) {
+            --card-size-width: 150px;
+            --card-size-height: 140px;
+        }
 
         &::before,
         &::after {
@@ -177,7 +203,11 @@ h1 {
 
     &__number {
         color: var(--color-soft-red);
-        font-size: 64px;
+        font-size: var(--numberSize);
+
+        @media (min-width: 1440px) {
+            --numberSize: 64px;
+        }
     }
 
     &__description {
@@ -185,5 +215,10 @@ h1 {
         color: var(--color-grayish-blue);
         text-transform: uppercase;
         letter-spacing: 4px;
+        font-size: 10px;
+
+        @media (min-width: 1440px) {
+            font-size: 16px;
+        }
     }
 }
