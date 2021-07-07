@@ -1,0 +1,189 @@
+:root {
+    --color-grayish-blue: hsl(237, 18%, 59%);
+    --color-soft-red: hsl(345, 95%, 68%);
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-dark-desaturated-blue: hsl(236, 21%, 26%);
+    --color-very-dark-blue: hsl(235, 16%, 14%);
+    --color-very-dark-mostly-black-blue: hsl(234, 17%, 12%);
+
+    --font-family: "Red Hat Text", sans-serif;
+}
+
+html {
+    font-size: 14px;
+
+    background: var(--color-dark-desaturated-blue);
+    background: linear-gradient(
+        0deg,
+        var(--color-very-dark-blue) 0%,
+        var(--color-very-dark-mostly-black-blue) 100%
+    );
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    background: url("../images/bg-stars.svg");
+}
+
+#page-wrapper {
+    background-image: url("../images/pattern-hills.svg");
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.visible-hidden:focus {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    width: auto;
+}
+
+h1 {
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 24px;
+    margin: 0;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.socials {
+    margin-top: auto;
+    text-align: center;
+    padding-bottom: 64px;
+
+    a {
+        color: var(--color-grayish-blue);
+        font-size: 24px;
+        margin: auto 16px;
+        transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+        &:hover {
+            color: var(--color-soft-red);
+        }
+    }
+}
+
+.number-cards {
+    display: flex;
+    gap: 24px;
+}
+
+.number-card {
+    --card-size: 132px;
+    --borderRadius: 8px;
+    --bulletSize: 10px;
+
+    &__number-wrapper {
+        position: relative;
+        margin-bottom: 24px;
+        perspective: 1000px;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+
+        &:hover {
+            //transform: rotateX(180deg);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 2px;
+            left: 2px;
+            bottom: -8px;
+            border-bottom-left-radius: var(--borderRadius);
+            border-bottom-right-radius: var(--borderRadius);
+            background: black;
+            opacity: 0.3;
+        }
+    }
+
+    &__number-content {
+        position: relative;
+        z-index: 1;
+        width: var(--card-size);
+        height: var(--card-size);
+        background: var(--color-dark-desaturated-blue);
+        border-radius: var(--borderRadius);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before,
+        &::after {
+            position: absolute;
+            top: 50%;
+            content: "";
+            background: var(--color-very-dark-blue);
+            width: var(--bulletSize);
+            height: var(--bulletSize);
+            border-radius: 50%;
+            margin-top: calc(#{var(--bulletSize) / 2} * -1);
+        }
+
+        &::before {
+            left: calc(#{var(--bulletSize)} * -1 / 2);
+        }
+
+        &::after {
+            right: calc(#{var(--bulletSize)} * -1 / 2);
+        }
+    }
+
+    &__layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        background: var(--color-very-dark-blue);
+        opacity: 0.3;
+    }
+
+    &__number {
+        color: var(--color-soft-red);
+        font-size: 64px;
+    }
+
+    &__description {
+        text-align: center;
+        color: var(--color-grayish-blue);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+    }
+}
